@@ -8,6 +8,9 @@ public class Deck {
     public ArrayList<Card> poker = new ArrayList<>();
     private HashMap<String,String> palos = new HashMap<>();
 
+    public void Random_head (){
+        Collections.shuffle(poker);
+    }
     public void shuffle(){
 
         Collections.shuffle(poker);
