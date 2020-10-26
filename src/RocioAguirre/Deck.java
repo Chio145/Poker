@@ -8,11 +8,13 @@ public class Deck {
     public ArrayList<Card> poker = new ArrayList<>();
     private HashMap<String,String> palos = new HashMap<>();
 
+    Deck(){
+        pok();
+    }
     public void Random_head (){
         Collections.shuffle(poker);
     }
     public void shuffle(){
-
         Collections.shuffle(poker);
         System.out.println("Se mezcló el Deck");
     }
@@ -34,7 +36,9 @@ public class Deck {
         }
     }
 
-    public void head(){
+    public void head() throws Exception{
+        if (poker.isEmpty())
+            throw new Exception("Se han agotado las cartas");
         int quitar=1;
         var card = poker.get(poker.size()-quitar);
         poker.remove(card);
@@ -42,7 +46,10 @@ public class Deck {
         System.out.println(String.format("Quedan %s",poker.size()));
     }
 
-    public void pick(){ var carta_azar = Card_Random();
+    public void pick() throws Exception {
+        if(poker.isEmpty())
+            throw new Exception("Se han agotado las cartas");
+        var carta_azar = Card_Random();
         poker.remove(carta_azar);
         System.out.println(carta_azar.toString());
         System.out.println(String.format("Quedan %s",poker.size()));
@@ -56,9 +63,12 @@ public class Deck {
         var card_random = (int)Math.floor(Math.random()*(1-poker.size()+1)+poker.size());
         return poker.get(card_random);
     }
-    public void hand(){
+    public void hand() throws Exception{
+        if(poker.isEmpty() || poker.size() <5)
+            throw new Exception("Se han agotado las cartas, trata con otra opción");
         if(poker.size() <= 5){  for (var card:poker){
-                Deck_Cartas(poker);
+                //Deck_Cartas(poker);
+                poker.remove(card);
             }
         }else { var cards = new ArrayList<Card>();
             Card card;

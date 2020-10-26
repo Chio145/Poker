@@ -3,51 +3,72 @@ package RocioAguirre;
 import java.util.Scanner;
 
 public class Main {
-    int menu;
+    Deck Play = new Deck();
+    boolean b =true;
+    boolean continue_game = true;
     public void ShowMenu(){
-        Deck o1 = new Deck();
-        Scanner ent = new Scanner(System.in);
         System.out.println("\t Bienvenid@ a Poker!" +
-                " \n Selecciona una opción"+"\n 1- Mezclar deck"+
+                "\n Selecciona una opción"+"\n 1- Mezclar deck"+
                 "\n 2- Sacar una carta"+ "\n 3- Carta al azar"+
                 "\n 4- Generar una mano de 5 cartas"+
-                "\n 0- Salir");
-        System.out.print("Digite la opción: ");
-        menu = ent.nextInt();
+                "\n 5- Reiniciar Juego"+
+                "\n 0- Salir Del Juego");
+    }
+
+    private int ask() throws Exception{
+        Scanner ent = new Scanner(System.in);
+        System.out.print("Digite una opcion: ");
+        var menu = ent.nextInt();
+        return menu;
+    }
+
+    public void Show_Switch(int menu) throws Exception {
+
         switch (menu){
             case 1:
-                o1.pok();
-                o1.shuffle();
+                Play.shuffle();
                 break;
+
             case 2:
-                o1.pok();
-                o1.Random_head();
-                o1.head();
+               Play.Random_head();
+                Play.head();
                 break;
 
             case 3:
-                o1.pok();
-                o1.pick();
+                Play.pick();
                 break;
+
             case 4:
-                o1.pok();
-                o1.hand();
+                Play.hand();
                 break;
+
             case 0:
                 System.out.println("Gracias Por Jugar");
+                continue_game = false;
                 break;
         }
     }
-    public void Option_Message(){
-        while (menu<0 || menu >4){
-            System.out.println("Opción No Válida");
+    public void Option_Message() throws Exception {
+        do{
+            line();
             ShowMenu();
-        }
-    }
+            try {
+                var menu = ask();
+                if (menu <0 || menu >5){
+                    throw new Exception("Opción No Valida");
+                }
+                Show_Switch(menu);
 
-    public static void main(String[] args) {
+            }catch (Exception exception){
+                System.out.println(exception.getMessage());
+            }
+        }while (continue_game);
+    }
+    void line(){
+        System.out.println("\n---------------------");
+    }
+    public static void main(String[] args) throws  Exception {
         Main Menu = new Main();
-        Menu.ShowMenu();
         Menu.Option_Message();
     }
 }
