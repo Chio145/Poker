@@ -8,7 +8,7 @@ public class Main {
     boolean continue_game = true;
     public void ShowMenu(){
         System.out.println("\t Bienvenid@ a Poker!" +
-                "\n Selecciona una opción"+"\n 1- Mezclar deck"+
+                "\n Selecciona una opción: "+"\n 1- Mezclar deck"+
                 "\n 2- Sacar una carta"+ "\n 3- Carta al azar"+
                 "\n 4- Generar una mano de 5 cartas"+
                 "\n 0- Salir Del Juego");
