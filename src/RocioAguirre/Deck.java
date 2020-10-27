@@ -65,7 +65,7 @@ public class Deck {
     }
     public void hand() throws Exception{
         if(poker.isEmpty() || poker.size() <5)
-            throw new Exception("Se han agotado las cartas, trata con otra opción");
+            throw new Exception("Se han agotado las cartas, trata con otra opción.");
         if(poker.size() <= 5){  for (var card:poker){
                 //Deck_Cartas(poker);
                 poker.remove(card);
