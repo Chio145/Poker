@@ -11,7 +11,6 @@ public class Main {
                 "\n Selecciona una opción"+"\n 1- Mezclar deck"+
                 "\n 2- Sacar una carta"+ "\n 3- Carta al azar"+
                 "\n 4- Generar una mano de 5 cartas"+
-                "\n 5- Reiniciar Juego"+
                 "\n 0- Salir Del Juego");
     }
 
@@ -54,7 +53,7 @@ public class Main {
             ShowMenu();
             try {
                 var menu = ask();
-                if (menu <0 || menu >5){
+                if (menu <0 || menu >4){
                     throw new Exception("Opción No Valida");
                 }
                 Show_Switch(menu);

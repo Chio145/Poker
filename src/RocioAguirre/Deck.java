@@ -47,7 +47,7 @@ public class Deck {
     }
 
     public void pick() throws Exception {
-        if(poker.isEmpty())
+        if(poker.isEmpty() || poker.size() <=1)
             throw new Exception("Se han agotado las cartas");
         var carta_azar = Card_Random();
         poker.remove(carta_azar);
